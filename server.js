@@ -28,14 +28,19 @@ const transactionID = uuid().split('-').join('');
 
 const fund = new FundTransactionBlockchain();
 
-// get entire blockchain endpoint
+
+// @route GET api/blockchain
+// @desc: get entire blockchain endpoint
+// @access Public
 app.get('/blockchain', (req, res) => {
   res.send(fund)
 });
 
 
-// create a new transaction endpoint
-app.post('/transaction', (req, res) => {
+// @route POST api/transaction
+// @desc: Create Create New Transaction
+// @access Public
+app.post('/api/transaction', (req, res) => {
   const amount = req.body.amount;
   const sender = req.body.sender;
   const recipient = req.body.recipient;
@@ -50,7 +55,9 @@ app.post('/transaction', (req, res) => {
 });
 
 
-// mine a new block 
+// @route POST api/confirm-trans
+// @desc: Validate your transaction with the token
+// @access Public
 app.post('/confirm-trans', (req, res) => {
   const lastFundBlock = fund.getLastFundTransactionBlock();
   const prevHash = lastFundBlock['hash'];
@@ -58,7 +65,7 @@ app.post('/confirm-trans', (req, res) => {
     transactions: fund.pendingFundTrans,
     index: lastFundBlock['index'] + 1
   }
-  // const token = fund.proofOfWork(prevHash, currentFundData);
+
   const token = req.body.token;
 
   if (_.find(tokens, {
