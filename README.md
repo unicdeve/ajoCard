@@ -13,6 +13,25 @@ nodemon server.js
 You gonna need POSTMAN client, please download postman or any other HTTP client for testing web services.
 
 ## API endpoint usage
+# http://localhost:4000/blockchain   -- HTTP method: GET
+```javascript
+
+
+No parameter need
+```
+
+## API endpoint usage
+# http://localhost:4000/transaction   -- HTTP method: POST
+```javascript
+
+
+You embbed the following parameters inside the body of the POST request in JSON format
+{
+	"amount": 4555,
+	"sender": "ANY senderID: it's assume the the USER is logged in", --> This could be any strings of characters
+	"recipient": "ANY recieverID" --> This could be any strings of characters
+}
+```
 
 
 ## Contributing
