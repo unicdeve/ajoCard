@@ -31,6 +31,18 @@ You embbed the following parameters inside the body of the POST request in JSON 
 	"sender": "ANY senderID: it's assume the the USER is logged in", --> This could be any strings of characters
 	"recipient": "ANY recieverID" --> This could be any strings of characters
 }
+You will be given a token
+```
+
+## API endpoint usage
+# http://localhost:4000/confirm-trans   -- HTTP method: POST
+```javascript
+
+
+You embbed the following parameters inside the body of the POST request in JSON format
+{
+	"token": "Slot in your token"
+}
 ```
 
 
